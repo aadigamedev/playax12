@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "ServerSide": {
+      "commandName": "Project"
+    },
+    "playax": {
+      "commandName": "Executable",
+      "executablePath": "C:\\Users\\playa\\Desktop\\playax_roleplay\\ragemp-server.exe",
+      "workingDirectory": "C:\\Users\\playa\\Desktop\\playax_roleplay"
+    }
+  }
+}

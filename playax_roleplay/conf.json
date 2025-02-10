@@ -1,0 +1,21 @@
+{
+    "maxplayers": 1000,
+    "name": "Playax Roleplay | ind 1 | @JASSH @SHAHRUKH @RONY [india] [roleplay] [text] [voice]",
+    "gamemode": "Roleplay",
+    "stream-distance": 500.0,
+    "announce": true,
+    "csharp": "enabled",
+    "port": 22005,
+    "language": "in",
+    "url": "https://discord.gg/6CjkyG3s7z",
+    "Voice Chat": "enabled",
+    "sync": "full",
+    "encryption": "enabled",
+    "anticheat": true,
+    "whitelist": false,
+    "client_packages": "client_packages",
+    "logs": {
+        "enabled": true,
+        "level": "debug"
+    }
+}

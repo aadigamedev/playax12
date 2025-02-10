@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vehicle Dashboard</title>
+<link
+href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+rel="stylesheet">
+<style>
+:root {
+--primary-color: #00BFFF; /* Electric Blue */
+--secondary-color: #666; /* Medium Gray */
+--text-color: #fff; /* White */
+--shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+body {
+margin: 0;
+padding: 0;
+display: flex;
+justify-content: center;
+align-items: flex-end;
+height: 100vh;
+background: transparent;
+position: fixed;
+bottom: 40px;
+right: 40px;
+pointer-events: none;
+z-index: 1000;
+font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-container {
+width: 280px;
+background: rgba(20, 20, 20, 0.3); /* Mostly transparent */
+border-radius: 12px;
+box-shadow: 0 4px 12px var(--shadow-color);
+backdrop-filter: blur(8px); /* Stronger blur */
+display: flex;
+flex-direction: column;
+align-items: center; /* Center content */
+padding: 16px;
+color: var(--text-color);
+}
+
+.speedometer-container {
+width: 160px;
+height: 160px;
+position: relative;
+}
+
+.speedometer-circle {
+width: 100%;
+height: 100%;
+border-radius: 50%;
+border: 1px solid rgba(255, 255, 255, 0.1); /* Subtle border */
+position: absolute;
+}
+
+.speedometer-needle {
+position: absolute;
+bottom: 50%;
+left: 50%;
+width: 60%;
+height: 3px; /* Thicker needle */
+background: var(--primary-color);
+transform-origin: left center;
+transform: translateX(-50%) rotate(-90deg);
+transition: transform 0.1s ease;
+box-shadow: 0 0 5px var(--primary-color);
+}
+
+.speed-text {
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 36px;
+font-weight: 500;
+color: var(--text-color);
+text-shadow: 1px 1px 3px var(--shadow-color);
+}
+
+.kmh-text {
+position: absolute;
+top: 65%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: #999;
+font-size: 11px;
+}
+
+.fuel-container {
+width: 100%;
+margin-top: 12px;
+}
+
+.fuel-bar {
+width: 100%;
+height: 6px;
+background: rgba(50, 50, 50, 0.5);
+border-radius: 10px; /* Rounded ends /
+overflow: hidden;
+}
+
+.fuel-progress {
+height: 100%;
+background: linear-gradient(to right, #f44336, #ff9800,
+var(--primary-color));
+border-radius: 10px; / Rounded ends /
+}
+
+.indicators-container {
+display: flex;
+justify-content: space-between;
+width: 100%;
+margin-top: 12px;
+font-size: 12px; / Smaller font /
+color: #ccc;
+}
+
+.indicator {
+/ Add styles to match the reference image /
+}
+</style>
+</head>
+<body>
+<div class="dashboard-container">
+<div class="speedometer-container">
+<div class="speedometer-circle">
+<div class="speedometer-needle"></div>
+</div>
+<div class="speed-text">000</div>
+<div class="kmh-text">KM/H</div>
+</div>
+
+<div class="fuel-container">
+<div class="fuel-bar">
+<div class="fuel-progress" style="width: 70%;"></div>
+</div>
+</div>
+
+<div class="indicators-container">
+<div class="indicator">ENGINE: ON</div>
+<div class="indicator">SEATBELT: ON</div>
+</div>
+</div>
+
+<script>
+const maxSpeed = 220; // Adjust as needed
+
+function updateSpeedometer(speed) {
+const speedText = document.querySelector('.speed-text');
+const needle = document.querySelector('.speedometer-needle');
+
+speed = Math.min(Math.max(speed, 0), maxSpeed);
+speedText.textContent = speed.toString().padStart(3, '0');
+
+const rotation = (speed / maxSpeed) 270 - 90; // Rotate from -90 to 180
+needle.style.transform = translateX(-50%) rotate(${rotation}deg);
+}
+
+function updateFuel(percentage) {
+const fuelProgress = document.querySelector('.fuel-progress');
+fuelProgress.style.width = ${percentage}%;
+fuelProgress.style.background = percentage > 50 ?
+(percentage > 75 ? '#4CAF50' : '#FF9800') :
+'#F44336';
+}
+
+function updateEngineStatus(status) {
+const engineStatus = document.querySelector('.engine-status');
+engineStatus.textContent = status ? 'ENGINE ONLINE' : 'ENGINE OFFLINE';
+engineStatus.style.color = status ? '#4CAF50' : '#F44336';
+}
+
+function updateTime() {
+const timeDisplay = document.querySelector('.time-display');
+const now = new Date();
+timeDisplay.textContent = now.toLocaleTimeString('en-US',
+{ hour: '2-digit', minute: '2-digit' });
+}
+
+// Example updates (replace with actual game data)
+updateSpeedometer(85);
+updateFuel(65);
+</script>
+</body>
+</html>
